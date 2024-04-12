@@ -1,0 +1,94 @@
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;800;900&display=swap);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+.container {
+  background-image: url(../img/sunny-day.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container .card {
+  color: aliceblue;
+  background-color: rgb(4, 77, 146);
+  box-shadow: -10px 0 10px #0000002f;
+  padding: 30px;
+  border-radius: 14px;
+  min-width: 400px;
+  text-align: center;
+}
+
+.container .card h1 {
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.container .card .search_section {
+  background-color: rgb(0, 44, 105);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+  border-radius: 8px;
+}
+
+.container .card .search_section input {
+  width: 95%;
+  height: 100%;
+  border-radius: 8px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border: none;
+  padding-left: 12px;
+}
+
+.container .card .search_section .icon {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.container .card .weather_info {
+  margin-top: 24px;
+}
+
+.container .card .weather_info img {
+  width: 150px;
+}
+
+.container .card .weather_info h2 {
+  font-size: 5rem;
+  font-weight: 500;
+}
+
+.container .card .weather_info p {
+  margin: 16px 0;
+}
+
+.container .card .weather_info .expecifics_info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #62b4e7;
+  padding-top: 20px;
+}
+
+.container .card .weather_info .expecifics_info div {
+  width: 50%;
+}
+
