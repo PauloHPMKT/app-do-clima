@@ -1,44 +1,8 @@
+import { environment } from './config/environment.js';
 
+const { weatherApiKey } = environment;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(weatherApiKey)
 // const _city = document.getElementById('city');
 // const search = document.getElementById('search');
 
