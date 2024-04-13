@@ -1,6 +1,6 @@
 import { environments } from './config/environment.js';
 
-const { weatherApiKey } = environments;
+const { weatherApiKey, apiUrl } = environments;
 
 const location = document.getElementById('city');
 const search = document.getElementById('search');
@@ -11,7 +11,8 @@ const getGeoLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      console.log(latitude, longitude);
+      const path = `weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}`;
+      showWeatherData(path);
     })
   }
 }
@@ -27,18 +28,21 @@ const getCityName = () => {
 
 search.addEventListener('click', getCityName);
 
-const getWeather = async (city) => {
-  const baseUrl = 'https://api.openweathermap.org/data/2.5/';
-  const path = `weather?q=${city}&units=metric&appid=${weatherApiKey}&lang=pt_BR`;
+const getWeather = async (info) => {
+  const baseUrl = apiUrl;
+  const path = info !== location.value 
+    ? info 
+    : `weather?q=${info}&units=metric&appid=${weatherApiKey}`;
   const url = `${baseUrl}${path}`;
-
+  
   const res = await fetch(url);
   const data = await res.json();
+  console.log(data);
   return data;
 }
 
-const showWeatherData = async (city) => {
-  const weatherData = await getWeather(city);
+const showWeatherData = async (requestData) => {
+  const weatherData = await getWeather(requestData);
   if ("cod" in weatherData && weatherData.cod === "404") {
     const errorMessage = `A cidade ${location.value} não foi encontrada!`;
     alert(errorMessage);
@@ -55,18 +59,11 @@ const mountHTML = (weatherData) => {
 
 const formatTemp = (temp) => {
   const tempFormatted = temp.toFixed(0);
+  if (tempFormatted.length >= 3) {
+    const compressTemp = Math.floor(Number(tempFormatted) / 10);
+    return `${compressTemp}°C`;
+  };
   return `${tempFormatted}°C`;
 }
 
-function main() {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${-3.89065}&lon=${-38.6819}&appid=${weatherApiKey}`
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => console.error(err));
-} 
-
-main();
 getGeoLocation();
