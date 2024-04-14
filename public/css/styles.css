@@ -90,5 +90,23 @@ body {
 
 .container .card .weather_info .expecifics_info div {
   width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
 }
 
+.container .card .weather_info .expecifics_info div > p {
+  margin-left: 10px;
+}
+
+.container .card .weather_info .labels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .card .weather_info .labels img {
+  width: 30px;
+  margin-left: 10px;
+}

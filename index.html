@@ -20,21 +20,24 @@
         </div>
         
         <div class="weather_info">
-          <img 
-            src="/public/img/cloudy.png" 
-            alt="descrição do clima"
-          />
-        
+          <div id="weather_info"></div>
           <h2 id="temp"></h2>
           <span id="weather"></span>
-          <p id="city_label"></p>
+          <div class="labels">
+            <p id="city_label"></p>
+          </div>
  
           <div class="expecifics_info">
             <div>
-              Sensação Termica
+              <ion-icon name="thermometer-outline"></ion-icon>
+              <p id="feels_like"></p>
             </div>
             <div>
-              Umidade
+              <ion-icon name="water-outline"></ion-icon>
+              <p id="umidity"></p>
+            </div>
+            <div>
+              <p id="variant"></p>
             </div>
           </div>
         </div>
