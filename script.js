@@ -1,7 +1,7 @@
-import { environments } from './config/environment.js';
+import {environments} from './config/env.js';
 import { weatherDescription } from './config/weatherDescription.js';
 
-const { weatherApiKey, apiUrl } = environments;
+const { WEATHER_API_KEY, API_URL } = environments;
 
 const location = document.getElementById('city');
 const search = document.getElementById('search');
@@ -20,7 +20,7 @@ const getGeoLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      const path = `weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}`;
+      const path = `weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}`;
       showWeatherData(path);
     })
   }
@@ -52,10 +52,10 @@ location.addEventListener('click', (e) => cleanInput(e));
 location.addEventListener('keypress', (e) => handleByEnter(e));
 
 const getWeather = async (info) => {
-  const baseUrl = apiUrl;
+  const baseUrl = API_URL;
   const path = info !== location.value 
     ? info 
-    : `weather?q=${info}&units=metric&appid=${weatherApiKey}`;
+    : `weather?q=${info}&units=metric&appid=${WEATHER_API_KEY}`;
   const url = `${baseUrl}${path}`;
   
   const res = await fetch(url);
